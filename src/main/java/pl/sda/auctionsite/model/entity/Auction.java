@@ -2,7 +2,7 @@ package pl.sda.auctionsite.model.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -11,6 +11,11 @@ public class Auction {
 
     public Auction() {
     }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
+    private Long id;
 
     String title;
     String description;
