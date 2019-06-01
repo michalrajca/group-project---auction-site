@@ -1,11 +1,11 @@
 package pl.sda.auctionsite.model.services;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import pl.sda.auctionsite.model.entity.User;
 import pl.sda.auctionsite.model.repositories.UserRepository;
 
-@Component
+@Service
 public class UserService {
 
     private final UserRepository userRepository;
