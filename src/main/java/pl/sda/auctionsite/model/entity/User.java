@@ -1,6 +1,7 @@
 package pl.sda.auctionsite.model.entity;
 
 import lombok.Data;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
