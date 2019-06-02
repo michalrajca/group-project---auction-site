@@ -10,8 +10,7 @@
     <title>Auction Site</title>
 </head>
 <body>
-
-
+<h1>Auction Site<h1>
 
 </body>
 </html>
