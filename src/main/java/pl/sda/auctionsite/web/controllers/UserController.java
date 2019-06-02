@@ -1,8 +1,6 @@
 package pl.sda.auctionsite.web.controllers;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.sda.auctionsite.model.entity.User;
 import pl.sda.auctionsite.model.services.UserService;
 
@@ -15,19 +13,22 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping
-    public void addUser(@RequestBody User user) {
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String addUser(@RequestBody User user) {
         userService.addUser(user);
+        return "user";
     }
 
-    @RequestMapping
-    public void modifyUser(User user, String login) {
+    @RequestMapping(value = "/users/modify/{login}", method = RequestMethod.PUT)
+    public String modifyUser(@RequestBody User user, @PathVariable String login) {
         userService.modifyUser(user, login);
+        return "user";
     }
 
-    @RequestMapping
-    public void deleteUser(String login) {
+    @RequestMapping(value = "/users/delete/{login}", method = RequestMethod.DELETE)
+    public String deleteUser(String login) {
         userService.deleteUser(login);
+        return "homePage";
     }
 
 }

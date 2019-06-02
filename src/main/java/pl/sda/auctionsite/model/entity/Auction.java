@@ -17,17 +17,39 @@ public class Auction {
     @Column(unique = true)
     private Long id;
 
-    String title;
-    String description;
+    @Column
+    private String title;
+
+    @Column
+    private String description;
+
 //    String href;
-    Category category;
-    double minimalPrice;
-    double buyPrice;
-    boolean positioned;
-    User user;
-    LocalDateTime startDate;
-    LocalDateTime endDate;
-    int count;
+
+    @ManyToOne
+    @JoinColumn(name = "category_name")
+    private Category category;
+
+    @Column
+    private double minimalPrice;
+
+    @Column
+    private double buyPrice;
+
+    @Column
+    private boolean positioned;
+
+    @ManyToOne
+    @JoinColumn(name = "user_login")
+    private User user;
+
+    @Column
+    private LocalDateTime startDate;
+
+    @Column
+    private LocalDateTime endDate;
+
+    @Column
+    private int count;
 
     public Auction(String title, String description, Category category, double minimalPrice, double buyPrice, boolean positioned, User user, LocalDateTime startDate, LocalDateTime endDate, int count) {
         this.title = title;
