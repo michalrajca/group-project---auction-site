@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>User Registration</title>
 </head>
 <body>
+
+<h1>Register a new account</h1>
+
+<form th:action="@{/registration}" method="post">
+
+    <p>Login
+    <div><input type="text" id="login" name="Login" th:value="${login}"/></div>
+    </p>
+
+    <p>Password
+    <div><input type="text" id="password" name="Password" th:value="${password}"/></div>
+    </p>
+
+    <p>Name
+    <div><input type="text" id="name" name="Name" th:value="*{accountName}"/></div>
+    </p>
+
+    <p>Province
+    <div><input type="text" id="province" name="Province" th:value="${province}"/></div>
+    </p>
+
+    <p>City
+    <div><input type="text" id="city" name="City" th:value="${city}"/></div>
+    </p>
+    <p>Street name
+    <div><input type="text" id="streetName" name="Street name" th:value="${streetName}"/></div>
+    </p>
+
+    <p>House number
+    <div><input type="text" id="houseNo" name="House number" th:value="${houseNo}"/></div>
+    </p>
+
+    <p>Postcode
+    <div><input type="text" id="postcode" name="Postcode" th:value="*{postcode}"/></div>
+    </p>
+
+    <p>Avatar URL
+    <div><input type="text" id="avatar" name="Avatar" th:value="${avatar}"/></div>
+    </p>
+
+    <input type="submit" name="Submit" value="Register"/>
+
+
+</form>
 
 </body>
 </html>
