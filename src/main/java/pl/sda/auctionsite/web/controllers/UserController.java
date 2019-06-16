@@ -26,6 +26,17 @@ public class UserController {
         return "userPage";
     }
 
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registration(){
+        return "registration";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(){
+        return "login";
+    }
+
+
     @RequestMapping(value = "/user/modify/{login}", method = RequestMethod.PUT)
     public String modifyUser(@RequestBody User user, @PathVariable String login) {
         userService.modifyUser(user, login);
