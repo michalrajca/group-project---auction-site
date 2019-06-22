@@ -12,11 +12,11 @@ public class Purchase {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "auction_title")
+    @JoinColumn(name = "auction_id")
     private Auction auction;
 
     @ManyToOne
-    @JoinColumn(name = "user_login")
+    @JoinColumn(name = "user_id")
     private User user;
     @Column
     private double price;

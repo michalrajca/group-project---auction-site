@@ -2,9 +2,7 @@ package pl.sda.auctionsite.model.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -14,6 +12,11 @@ public class Category {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
+    private Long id;
+
+    @Column(unique = true)
     private String name;
 
     @Column

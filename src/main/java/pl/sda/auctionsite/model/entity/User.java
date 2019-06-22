@@ -7,11 +7,14 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table
 public class User {
 
     @Id
-    @Column(unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
+    private Long id;
+
+    @Column(unique = true)
     private String login;
 
     @Column(nullable = false)

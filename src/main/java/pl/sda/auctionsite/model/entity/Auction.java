@@ -26,7 +26,7 @@ public class Auction {
 //    String href;
 
     @ManyToOne
-    @JoinColumn(name = "category_name")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @Column
@@ -39,7 +39,7 @@ public class Auction {
     private boolean positioned;
 
     @ManyToOne
-    @JoinColumn(name = "user_login")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column

@@ -10,15 +10,16 @@ import javax.persistence.ManyToOne;
 @Data
 @Entity
 public class WatchList {
+
     @Id
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "auction_title")
+    @JoinColumn(name = "auction_id")
     private Auction auction;
 
     @ManyToOne
-    @JoinColumn(name = "user_login")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public WatchList() {

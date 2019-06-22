@@ -15,28 +15,28 @@ public class AuctionService {
         this.auctionRepository = auctionRepository;
     }
 
-//    public List<Auction> lastAddedAuctions(){
-//        return auctionRepository.
-//    }
+    public List<Auction> lastAddedAuctions(){
+        return auctionRepository.findFirst10ByOrderByStartDateDesc();
+    }
 
-//    public List<Auction> endingAuctions(){
-//
-//    }
-//
-//    public List<Auction> userAuctions(){
-//
-//    }
-//
-//    public List<Auction> biddingAuctions(){
-//
-//    }
-//
-//    public List<Auction> watchListAuctions(){
-//
-//    }
-//
-//    public List<Auction> endedAuctions(){
-//
-//    }
+    public List<Auction> endingAuctions(){
+        return null;
+    }
+
+    public List<Auction> userAuctions(){
+        return null;
+    }
+
+    public List<Auction> biddingAuctions(){
+        return null;
+    }
+
+    public List<Auction> watchListAuctions(){
+        return null;
+    }
+
+    public List<Auction> endedAuctions(){
+        return null;
+    }
 
 }
