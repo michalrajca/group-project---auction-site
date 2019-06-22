@@ -1,54 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="homePage">
 <head>
     <meta charset="UTF-8">
     <title>User Registration</title>
 </head>
 <body>
-
+<div class="col-md-8 blog-main" layout:fragment="content">
 <h1>Register a new account</h1>
 
-<form th:action="@{/registration}" method="post">
+<form th:action="@{/registration}" th:object="${user}" method="post">
 
     <p>Login
-    <div><input type="text" id="login" name="Login" th:value="${login}"/></div>
+    <div><input type="text" id="login" name="Login" th:value="${user.login}"/></div>
     </p>
 
     <p>Password
-    <div><input type="text" id="password" name="Password" th:value="${password}"/></div>
+    <div><input type="text" id="password" name="Password" th:value="${user.password}"/></div>
     </p>
 
     <p>Name
-    <div><input type="text" id="name" name="Name" th:value="*{accountName}"/></div>
+    <div><input type="text" id="name" name="Name" th:value="${user.accountName}"/></div>
     </p>
 
     <p>Province
-    <div><input type="text" id="province" name="Province" th:value="${province}"/></div>
+    <div><input type="text" id="province" name="Province" th:value="${user.province}"/></div>
     </p>
 
     <p>City
-    <div><input type="text" id="city" name="City" th:value="${city}"/></div>
+    <div><input type="text" id="city" name="City" th:value="${user.city}"/></div>
     </p>
     <p>Street name
-    <div><input type="text" id="streetName" name="Street name" th:value="${streetName}"/></div>
+    <div><input type="text" id="streetName" name="Street name" th:value="${user.streetName}"/></div>
     </p>
 
     <p>House number
-    <div><input type="text" id="houseNo" name="House number" th:value="${houseNo}"/></div>
+    <div><input type="text" id="houseNo" name="House number" th:value="${user.houseNo}"/></div>
     </p>
 
     <p>Postcode
-    <div><input type="text" id="postcode" name="Postcode" th:value="*{postcode}"/></div>
+    <div><input type="text" id="postcode" name="Postcode" th:value="${user.postcode}"/></div>
     </p>
 
     <p>Avatar URL
-    <div><input type="text" id="avatar" name="Avatar" th:value="${avatar}"/></div>
+    <div><input type="text" id="avatar" name="Avatar" th:value="${user.avatarHref}"/></div>
     </p>
 
     <input type="submit" name="Submit" value="Register"/>
 
 
 </form>
-
+</div>
 </body>
 </html>

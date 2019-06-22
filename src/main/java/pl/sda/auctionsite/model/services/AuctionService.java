@@ -1,5 +1,6 @@
 package pl.sda.auctionsite.model.services;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import pl.sda.auctionsite.model.entity.Auction;
 import pl.sda.auctionsite.model.repositories.AuctionRepository;
@@ -20,7 +21,7 @@ public class AuctionService {
     }
 
     public List<Auction> endingAuctions(){
-        return null;
+        return auctionRepository.findFirst10ByOrderByEndDateDesc();
     }
 
     public List<Auction> userAuctions(){
