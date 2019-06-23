@@ -1,6 +1,7 @@
 package pl.sda.auctionsite.web.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.auctionsite.model.entity.User;
@@ -23,8 +24,8 @@ public class UserController {
         return "userPage";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute(value = "user") @Valid User user, Errors errors) {
+    @PostMapping("/registration")
+    public String addUser(@ModelAttribute @Valid User user, Errors errors) {
         if (errors.hasErrors()) {
             return "registration";
         }
@@ -32,12 +33,13 @@ public class UserController {
         return "userPage";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(){
+    @GetMapping("/registration")
+    public String registration(Model model){
+        model.addAttribute("user", new User());
         return "registration";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @GetMapping("/login")
     public String login(){
         return "login";
     }

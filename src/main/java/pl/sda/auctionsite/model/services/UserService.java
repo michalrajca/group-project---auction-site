@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import pl.sda.auctionsite.model.entity.User;
 import pl.sda.auctionsite.model.repositories.UserRepository;
 
+import java.time.LocalDate;
+
 @Service
 public class UserService {
 
@@ -15,6 +17,9 @@ public class UserService {
     }
 
     public void addUser(@RequestBody User user) {
+        user.setAccountCreationDate(LocalDate.now());
+        user.setAccountStatus("Active");
+        user.setAccountType("Normal");
         userRepository.save(user);
     }
 

@@ -6,4 +6,5 @@ import pl.sda.auctionsite.model.entity.User;
 public interface UserRepository extends JpaRepository<User, String> {
 
 //    List<User> findByLogin(String login);
+
 }

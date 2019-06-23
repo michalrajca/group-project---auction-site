@@ -12,11 +12,11 @@
 <form th:action="@{/login}" method="post">
 
     <p>Login
-    <div><input type="text" id="login" name="Login" th:value="${login}"/></div>
+    <div><input type="text" id="login" name="login" th:value="${login}"/></div>
     </p>
 
     <p>Password
-    <div><input type="text" id="password" name="Password" th:value="${password}"/></div>
+    <div><input type="text" id="password" name="password" th:value="${password}"/></div>
     </p>
     <p>
         <input type="submit" name="submit" value="Sign in"/>
@@ -29,6 +29,7 @@
     <input type="submit" name="submit" value="Register">
 </form>
 </p>
+
 </div>
 </body>
 </html>

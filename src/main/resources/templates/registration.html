@@ -9,45 +9,45 @@
 <div class="col-md-8 blog-main" layout:fragment="content">
 <h1>Register a new account</h1>
 
-<form th:action="@{/registration}" th:object="${user}" method="post">
+<form th:action="@{/user/registration}" th:object="${user}" method="post">
 
     <p>Login
-    <div><input type="text" id="login" name="Login" th:value="${user.login}"/></div>
+    <div><input type="text" id="login" th:field="*{login}"/></div>
     </p>
 
     <p>Password
-    <div><input type="text" id="password" name="Password" th:value="${user.password}"/></div>
+    <div><input type="text" id="password" th:field="*{password}"/></div>
     </p>
 
     <p>Name
-    <div><input type="text" id="name" name="Name" th:value="${user.accountName}"/></div>
+    <div><input type="text" id="name" th:field="*{accountName}"/></div>
     </p>
 
     <p>Province
-    <div><input type="text" id="province" name="Province" th:value="${user.province}"/></div>
+    <div><input type="text" id="province" th:field="*{province}"/></div>
     </p>
 
     <p>City
-    <div><input type="text" id="city" name="City" th:value="${user.city}"/></div>
+    <div><input type="text" id="city" th:field="*{city}"/></div>
     </p>
+
     <p>Street name
-    <div><input type="text" id="streetName" name="Street name" th:value="${user.streetName}"/></div>
+    <div><input type="text" id="streetName" th:field="*{streetName}"/></div>
     </p>
 
     <p>House number
-    <div><input type="text" id="houseNo" name="House number" th:value="${user.houseNo}"/></div>
+    <div><input type="text" id="houseNo" th:field="*{houseNo}"/></div>
     </p>
 
     <p>Postcode
-    <div><input type="text" id="postcode" name="Postcode" th:value="${user.postcode}"/></div>
+    <div><input type="text" id="postcode" th:field="*{postcode}"/></div>
     </p>
 
     <p>Avatar URL
-    <div><input type="text" id="avatar" name="Avatar" th:value="${user.avatarHref}"/></div>
+    <div><input type="text" id="avatar" th:field="*{avatarHref}"/></div>
     </p>
 
-    <input type="submit" name="Submit" value="Register"/>
-
+    <input type="submit" value="Register"/>
 
 </form>
 </div>
