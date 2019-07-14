@@ -23,7 +23,6 @@ public class Auction {
     @Column
     private String description;
 
-//    String href;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
