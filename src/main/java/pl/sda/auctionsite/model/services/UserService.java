@@ -3,28 +3,32 @@ package pl.sda.auctionsite.model.services;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import pl.sda.auctionsite.model.entity.User;
+import pl.sda.auctionsite.model.repositories.RoleRepository;
 import pl.sda.auctionsite.model.repositories.UserRepository;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     public void addUser(@RequestBody User user) {
         user.setAccountCreationDate(LocalDate.now());
         user.setAccountStatus("Active");
-        user.setAccountType("Normal");
+        user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
         userRepository.save(user);
     }
 
-    public void modifyUser(User user, String login) {
-        userRepository.findById(login).map(
+    public void modifyUser(User user, Long id) {
+        userRepository.findById(id).map(
                 userFromDatabase -> {
                     userFromDatabase.setPassword(user.getPassword());
                     userFromDatabase.setAccountName(user.getAccountName());
@@ -39,7 +43,7 @@ public class UserService {
         );
     }
 
-    public void deleteUser(String login) {
-        userRepository.deleteById(login);
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 }
