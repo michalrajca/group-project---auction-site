@@ -27,8 +27,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void modifyUser(User user, Long id) {
-        userRepository.findById(id).map(
+    public void modifyUser(User user, String login) {
+        userRepository.findByLogin(login).map(
                 userFromDatabase -> {
                     userFromDatabase.setPassword(user.getPassword());
                     userFromDatabase.setAccountName(user.getAccountName());
@@ -43,7 +43,7 @@ public class UserService {
         );
     }
 
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+    public void deleteUser(String login) {
+        userRepository.deleteByLogin(login);
     }
 }
