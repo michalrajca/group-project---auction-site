@@ -11,14 +11,14 @@
 <form th:action="@{/login}" method="post">
 
     <p>Login
-    <div><input type="text" id="login" name="login" th:value="${login}"/></div>
+    <div><input type="text" id="login" name="login" autofocus="autofocus" placeholder="Username">/></div>
     </p>
 
     <p>Password
-    <div><input type="text" id="password" name="password" th:value="${password}"/></div>
+    <div><input type="text" id="password" name="password" placeholder="Password"></div>
     </p>
     <p>
-        <input type="submit" value="Sign in"/>
+        <input type="submit" name="login-submit" id="login-submit" value="Sign in"/>
     </p>
 </form>
 

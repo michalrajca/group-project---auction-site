@@ -39,12 +39,6 @@ public class UserController {
         return "registration";
     }
 
-    @GetMapping("/login")
-    public String login(){
-
-
-        return "login";
-    }
 
 
     @RequestMapping(value = "/user/modify/{login}", method = RequestMethod.PUT)

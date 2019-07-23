@@ -16,7 +16,7 @@ public class Category {
     @Column(unique = true)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String name;
 
     @Column
