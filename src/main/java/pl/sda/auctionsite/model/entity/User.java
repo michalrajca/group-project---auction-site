@@ -1,32 +1,32 @@
 package pl.sda.auctionsite.model.entity;
 
 import lombok.Data;
-import org.springframework.data.repository.support.Repositories;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.web.context.WebApplicationContext;
-import pl.sda.auctionsite.model.repositories.RoleRepository;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Collection;
 
 @Data
+@NoArgsConstructor
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true,nullable = false)
+    @Column(length=44,unique = true,nullable = false)
     private String login;
 
-    @Column(unique = true,nullable = false)
+    @Column(length=100,unique = true,nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String password;
+
+    @Transient
+    private String passwordConfirm;
 
     @Column(nullable = false)
     private String accountName;
@@ -56,32 +56,11 @@ public class User {
     private String avatarHref;
 
     @ManyToMany
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
+//    @JoinTable(
+//            name = "users_roles",
+//            joinColumns = @JoinColumn(
+//                    name = "user_id", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(
+//                    name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
-
-    public User() {
-    }
-
-    public User(String login, String email, String password, String accountName, String province, String city, String streetName, String houseNo, String postcode, String avatarHref) {
-        this.login = login;
-        setEmail(email);
-        this.password = BCrypt.hashpw(password,BCrypt.gensalt());
-        this.accountName = accountName;
-        this.province = province;
-        this.city = city;
-        this.streetName = streetName;
-        this.houseNo = houseNo;
-        this.postcode = postcode;
-        this.accountCreationDate = LocalDate.now();
-        this.accountStatus = "Active";
-        this.avatarHref = avatarHref;
-
-    }
-
-
 }

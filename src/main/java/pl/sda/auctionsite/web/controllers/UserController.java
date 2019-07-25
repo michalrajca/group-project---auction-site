@@ -1,5 +1,7 @@
 package pl.sda.auctionsite.web.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,6 +17,9 @@ public class UserController {
 
     private final UserService userService;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public UserController(UserService userService) {
         this.userService = userService;
     }
@@ -26,6 +31,7 @@ public class UserController {
 
     @PostMapping("/registration")
     public String addUser(@ModelAttribute @Valid User user, Errors errors) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         if (errors.hasErrors()) {
             return "registration";
         }
