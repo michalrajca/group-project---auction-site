@@ -8,10 +8,12 @@
 <div class="col-md-8 blog-main" layout:fragment="content">
 <h1>Register a new account</h1>
 
-<form th:action="@{/user/registration}" th:object="${user}" method="post">
+<form th:action="@{/user/registration}" th:object="${userForm}" method="post">
 
     <p>Login
-    <div><input type="text" id="login" th:field="*{login}"/></div>
+    <div class="form-group ${status.error ? 'has-error' : ''}">
+    <input type="text" id="login" th:field="*{login}"/>
+    </div>
     </p>
 
     <p>Password

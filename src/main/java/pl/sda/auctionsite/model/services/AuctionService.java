@@ -1,5 +1,6 @@
 package pl.sda.auctionsite.model.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import pl.sda.auctionsite.model.entity.Auction;
@@ -10,11 +11,8 @@ import java.util.List;
 @Component
 public class AuctionService {
 
-    private final AuctionRepository auctionRepository;
-
-    public AuctionService(AuctionRepository auctionRepository) {
-        this.auctionRepository = auctionRepository;
-    }
+    @Autowired
+    private AuctionRepository auctionRepository;
 
     public List<Auction> lastAddedAuctions(){
         return auctionRepository.findFirst10ByOrderByStartDateDesc();

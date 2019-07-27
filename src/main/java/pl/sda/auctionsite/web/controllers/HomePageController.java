@@ -1,5 +1,6 @@
 package pl.sda.auctionsite.web.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,11 +14,8 @@ import pl.sda.auctionsite.model.services.CategoryService;
 @RequestMapping(value = "/home")
 public class HomePageController {
 
-    private final CategoryService categoryService;
-
-    public HomePageController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
+    @Autowired
+    private  CategoryService categoryService;
 
     @GetMapping
     public String homePage(){
